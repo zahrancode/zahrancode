@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:141e30,100:243b55&height=220&section=header&text=ZahranCode%20•%20Web%20Developer&fontSize=40&fontColor=ffffff&animation=fadeIn&desc=PHP%20%7C%20Laravel%20%7C%20Backend&descAlignY=70" />
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:0f2027,50:203a43,100:2c5364&height=230&section=header&text=Zahrancode&fontSize=44&fontColor=9ae6ff&animation=fadeIn&desc=Web%20Developer%20•%20PHP%20•%20Laravel&descAlignY=70" />
+</p>
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&color=7DD3FC&center=true&vCenter=true&width=500&lines=Aspiring+Web+Developer;PHP+%26+Laravel+Enthusiast;Building+Clean+%26+Scalable+Apps;Always+Learning+New+Things" />
 </p>
 <h1 align="center">Hi, I'm ZAHRANCODE 👋</h1>
 <h3 align="center">Aspiring Web Developer | PHP & Laravel</h3>
