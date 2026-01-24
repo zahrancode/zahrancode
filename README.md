@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,100:2c5364&height=220&section=header&text=Welcome%20to%20Zahrancode&fontSize=42&fontColor=ffffff&animation=fadeIn" />
+</p>
 <h1 align="center">Hi, I'm Zahran 👋</h1>
 <h3 align="center">Aspiring Web Developer | PHP & Laravel</h3>
 
