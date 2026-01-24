@@ -5,7 +5,9 @@
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&color=7DD3FC&center=true&vCenter=true&width=520&lines=Aspiring+Web+Developer;PHP+%26+Laravel+Enthusiast;Building+Clean+%26+Scalable+Apps;Always+Learning+New+Things" />
 </p>
-
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=zahrancode&label=Profile%20Views&color=0ea5e9&style=flat" />
+</p>
 ---
 
 <h2 align="center">👋 Hi, I'm Zahran</h2>
