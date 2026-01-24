@@ -77,3 +77,6 @@ This GitHub serves as my personal portfolio and learning journal — documenting
 <p align="center">
 ✨ <i>Still learning, still building, and always improving.</i> ✨
 </p>
+## 🐍 Contribution Snake
+
+![snake animation](https://github.com/zahrancode/zahrancode/blob/output/github-contribution-grid-snake.svg)
