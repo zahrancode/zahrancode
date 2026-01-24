@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:232526,50:414345,100:000000&height=230&section=header&text=Zahrancode&fontSize=42&fontColor=bb86fc&animation=fadeIn&desc=Aspiring%20Web%20Developer&descAlignY=70" />
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:0f2027,50:203a43,100:2c5364&height=230&section=header&text=Zahrancode&fontSize=44&fontColor=9ae6ff&animation=fadeIn&desc=Web%20Developer%20•%20PHP%20•%20Laravel&descAlignY=70" />
 </p>
 <h1 align="center">Hi, I'm ZAHRANCODE 👋</h1>
 <h3 align="center">Aspiring Web Developer | PHP & Laravel</h3>
