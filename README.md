@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:0f2027,50:203a43,100:2c5364&height=230&section=header&text=Zahrancode&fontSize=44&fontColor=9ae6ff&animation=fadeIn&desc=Web%20Developer%20•%20PHP%20•%20Laravel&descAlignY=70" />
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:0f2027,50:203a43,100:2c5364&height=230&section=header&text=ZAHRANCODE&fontSize=44&fontColor=9ae6ff&animation=fadeIn&desc=Web%20Developer%20•%20PHP%20•%20Laravel&descAlignY=70" />
 </p>
-<h1 align="center">Hi, I'm Zahran 👋</h1>
+<h1 align="center">Hi, I'm ZAHRANCODE 👋</h1>
 <h3 align="center">Aspiring Web Developer | PHP & Laravel</h3>
 
 <p align="center">
@@ -13,7 +13,7 @@
 
 ## 🌱 About Me
 
-Hi, I’m **Zahran**, an aspiring Web Developer with a strong interest in backend development.  
+Hi, I’m **Zahrancode**, an aspiring Web Developer with a strong interest in backend development.  
 I enjoy understanding how systems work behind the scenes — from writing structured code to connecting applications with databases and APIs.
 
 Currently, I’m focusing on **PHP & Laravel**, while also exploring frontend fundamentals to build complete and user-friendly web solutions.
