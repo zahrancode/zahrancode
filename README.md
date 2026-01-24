@@ -40,16 +40,15 @@ This GitHub serves as my personal portfolio and learning journal — documenting
 
 ## 📂 Featured Projects
 
-> 🚧 *Projects will be added as I continue building and learning.*
+- 🔹 **Laravel Web Application**
+  Backend-focused web app using Laravel & MySQL.  
+  _Status: In Progress_
 
-- 🔹 **Laravel Web Application**  
-  Backend-focused web app using Laravel & MySQL.
+- 🔹 **PHP Native Playground**
+  Exploring core PHP concepts, logic, and backend fundamentals.
 
-- 🔹 **PHP Native Project**  
-  Learning core PHP concepts and backend logic.
-
-- 🔹 **Web Experiments**  
-  Small projects to explore frontend & backend integration.
+- 🔹 **API & Integration Experiments**
+  Learning how APIs work and connect systems together.
 
 ---
 
