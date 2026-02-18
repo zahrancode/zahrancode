@@ -1,0 +1,197 @@
+<?php
+include "config.php";
+
+$profile = $conn->query("SELECT * FROM profile LIMIT 1")->fetch_assoc();
+$links = $conn->query("SELECT * FROM links WHERE status='active' ORDER BY clicks DESC")->fetch_assoc();
+$allLinks = $conn->query("SELECT * FROM links WHERE status='active' ORDER BY clicks DESC");
+$totalClicks = $conn->query("SELECT SUM(clicks) as total FROM links")->fetch_assoc()['total'];
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title><?php echo $profile['name']; ?></title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#0f0c29;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+    overflow-x:hidden;
+}
+
+/* PARTICLE BACKGROUND */
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+/* PROFILE */
+.profile-img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    border:3px solid #00ffff;
+    box-shadow:0 0 30px #00ffff;
+    object-fit:cover;
+    animation:fadeIn 1.5s ease-in-out;
+}
+
+h1{
+    font-family:'Orbitron';
+    margin-top:20px;
+    letter-spacing:2px;
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 12px;
+    font-size:12px;
+    border-radius:20px;
+    background:linear-gradient(90deg,#ff00cc,#00ffff);
+    margin-top:10px;
+}
+
+.bio{
+    margin-top:15px;
+    font-size:14px;
+    opacity:0.8;
+}
+
+.stats{
+    margin-top:20px;
+    font-size:14px;
+}
+
+/* LINK BUTTON */
+.link-btn{
+    display:block;
+    margin:15px auto;
+    width:90%;
+    max-width:400px;
+    padding:15px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:600;
+    color:white;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.2);
+    backdrop-filter:blur(15px);
+    transition:0.4s;
+    animation:fadeInUp 0.8s ease forwards;
+}
+
+.link-btn:hover{
+    background:linear-gradient(90deg,#ff00cc,#00ffff);
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 0 25px #00ffff;
+}
+
+/* FOOTER */
+.footer{
+    margin-top:40px;
+    font-size:12px;
+    opacity:0.6;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+@keyframes fadeInUp{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<img src="<?php echo $profile['photo']; ?>" class="profile-img">
+
+<h1><?php echo $profile['name']; ?></h1>
+
+<div class="badge">âœ” Official 3MS</div>
+
+<div class="bio">
+<?php echo nl2br($profile['bio']); ?>
+</div>
+
+<div class="stats">
+ðŸ”¥ Total Click: <span id="counter"><?php echo $totalClicks ?? 0; ?></span>
+</div>
+
+<?php while($row=$allLinks->fetch_assoc()){ ?>
+<a href="go.php?id=<?php echo $row['id']; ?>" class="link-btn">
+<?php echo $row['title']; ?>
+</a>
+<?php } ?>
+
+<div class="footer">
+3MS Cyber Ultra Visual Mode
+</div>
+
+<script>
+// COUNTER ANIMATION
+let counter = document.getElementById("counter");
+let target = parseInt(counter.innerText);
+let count = 0;
+let speed = target / 50;
+
+function updateCounter(){
+    count += speed;
+    if(count < target){
+        counter.innerText = Math.floor(count);
+        requestAnimationFrame(updateCounter);
+    } else {
+        counter.innerText = target;
+    }
+}
+updateCounter();
+
+// PARTICLE EFFECT
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray = [];
+
+for(let i=0;i<80;i++){
+    particlesArray.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        size:Math.random()*2,
+        speedY:Math.random()*1
+    });
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle="#00ffff";
+    particlesArray.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.fill();
+        p.y += p.speedY;
+        if(p.y > canvas.height) p.y = 0;
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
