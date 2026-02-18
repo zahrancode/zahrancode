@@ -1,0 +1,197 @@
+<?php
+require_once "config.php";
+
+$queryProfile = mysqli_query($conn, "SELECT * FROM profile LIMIT 1");
+$profile = mysqli_fetch_assoc($queryProfile);
+
+$links = mysqli_query($conn, "SELECT * FROM links WHERE status='active' ORDER BY id DESC");
+?>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <title><?php echo $profile['name']; ?></title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+        body{
+            margin:0;
+            font-family:'Poppins',sans-serif;
+            background:#0f0c29;
+            overflow-x:hidden;
+            color:white;
+            -webkit-text-size-adjust: 100%; /* Mencegah perubahan ukuran font otomatis di beberapa browser */
+        }
+
+        #particles-js{
+            position:fixed;
+            width:100%;
+            height:100%;
+            z-index:0;
+        }
+
+        #loader{
+            position:fixed;
+            width:100%;
+            height:100%;
+            background:#000;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:#00ffff;
+            font-family:'Orbitron';
+            z-index:9999;
+            animation: fadeOut 1.5s forwards;
+            animation-delay:1.5s;
+        }
+        @keyframes fadeOut{
+            to{opacity:0; visibility:hidden;}
+        }
+
+        .container{
+            position:relative;
+            z-index:2;
+            width:85%; /* Diperkecil dari 88% agar tidak memenuhi layar */
+            max-width:380px; /* Batas lebar maksimal dikurangi agar lebih ramping */
+            margin:60px auto; 
+            text-align:center;
+            padding:30px 20px; /* Padding dikurangi agar tidak terlihat 'zoom' */
+            border-radius:20px;
+            backdrop-filter: blur(15px);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .profile-logo{
+            width:90px; /* Ukuran foto diperkecil dari 115px */
+            height:90px;
+            border-radius:50%;
+            border:2px solid #ff00cc;
+            object-fit:cover;
+            box-shadow:0 0 15px #ff00cc, 0 0 30px #00ffff;
+            animation:pulse 2s infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes pulse{
+            0%{box-shadow:0 0 10px #ff00cc;}
+            50%{box-shadow:0 0 25px #00ffff;}
+            100%{box-shadow:0 0 10px #ff00cc;}
+        }
+
+        h1{
+            font-family:'Orbitron';
+            font-size: 20px; /* Font size diturunkan agar proporsional */
+            margin-bottom: 10px;
+            background: linear-gradient(90deg,#ff00cc,#00ffff);
+            -webkit-background-clip:text;
+            color:transparent;
+            letter-spacing: 1px;
+        }
+
+        .bio{
+            font-size: 13px; /* Font size diturunkan */
+            opacity:0.8;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+
+        .link-btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 15px; /* Padding tombol dikurangi */
+            margin-bottom: 15px; 
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 14px; /* Font tombol disesuaikan */
+            font-weight: 600;
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .link-btn:hover{
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        .link-icon {
+            width: 22px; /* Ukuran icon diperkecil */
+            height: 22px;
+            object-fit: contain;
+            margin-right: 12px;
+        }
+
+        footer{
+            margin-top: 40px;
+            font-size: 10px;
+            opacity: 0.4;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="loader">
+    <h1>3MS GAMING...</h1>
+</div>
+
+<div id="particles-js"></div>
+
+<div class="container">
+    <?php if(!empty($profile['photo'])): ?>
+        <img src="<?php echo $profile['photo']; ?>" class="profile-logo">
+    <?php endif; ?>
+
+    <h1><?php echo $profile['name']; ?></h1>
+    <div class="bio"><?php echo $profile['bio']; ?></div>
+
+    <div class="link-wrapper">
+        <?php while($row = mysqli_fetch_assoc($links)){ ?>
+            <a class="link-btn" href="go.php?id=<?php echo $row['id']; ?>" target="_blank">
+                <?php if(!empty($row['photo'])): ?>
+                    <img src="<?php echo $row['photo']; ?>" class="link-icon">
+                <?php endif; ?>
+                <span><?php echo $row['title']; ?></span>
+            </a>
+        <?php } ?>
+    </div>
+
+    <footer>© 2026 3MS GAMING PROJECT</footer>
+</div>
+
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 40 },
+    "color": { "value": ["#ff00cc","#00ffff"] },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.3 },
+    "size": { "value": 1.5 },
+    "line_linked": {
+      "enable": true,
+      "distance": 120,
+      "color": "#00ffff",
+      "opacity": 0.1,
+      "width": 1
+    },
+    "move": { "enable": true, "speed": 1 }
+  }
+});
+</script>
+
+</body>
+</html>
